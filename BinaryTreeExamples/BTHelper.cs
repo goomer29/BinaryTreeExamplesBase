@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Runtime.CompilerServices;
 using System.Text;
 using DataStructureCore;
 
@@ -81,7 +82,7 @@ namespace BinaryTreeExamples
         /// <param name="root"></param>
         public static void PrintPreOrder<T>(BinNode<T> root)
         {
-            if (root != null) 
+            if (root != null)
             {
                 Console.WriteLine(root.GetValue());
                 PrintPreOrder(root.GetLeft());
@@ -99,7 +100,7 @@ namespace BinaryTreeExamples
         /// <param name="root"></param>
         public static void PrintInOrder<T>(BinNode<T> root)
         {
-           if (root != null)
+            if (root != null)
             {
                 PrintInOrder(root.GetLeft());
                 Console.WriteLine(root.GetValue());
@@ -122,7 +123,7 @@ namespace BinaryTreeExamples
                 PrintInOrder(root.GetLeft());
                 PrintInOrder(root.GetRight());
                 Console.WriteLine(root.GetValue());
-                
+
             }
 
         }
@@ -134,7 +135,7 @@ namespace BinaryTreeExamples
         #region האם עלה
         public static bool IsLeaf<T>(BinNode<T> root)
         {
-            
+            return false;
         }
         #endregion
 
@@ -156,14 +157,14 @@ namespace BinaryTreeExamples
             {
                 return 0;
             }
-            return 1+CountTreeNodes(root.GetLeft())+ CountTreeNodes(root.GetRight());
+            return 1 + CountTreeNodes(root.GetLeft()) + CountTreeNodes(root.GetRight());
         }
         #endregion
 
         #region האם ערך קיים בעץ
         public static bool IsExistsInTree<T>(BinNode<T> root, T val)
         {
-            
+            return false;
 
         }
         #endregion
@@ -175,7 +176,7 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static bool EachHasTwoChilds<T>(BinNode<T> root)
         {
-           
+            return false;
         }
 
         /// <summary>
@@ -183,9 +184,9 @@ namespace BinaryTreeExamples
         /// </summary>
         /// <param name="root"></param>
         public static void UpdateCharTree(BinNode<char> root)
-            {
-           
-         
+        {
+
+
         }
 
         /// <summary>
@@ -197,8 +198,8 @@ namespace BinaryTreeExamples
 
         public static int CountLeaves<T>(BinNode<T> root)
         {
-           
-                
+            return 0;
+
         }
         /// <summary>
         /// שאלה 12
@@ -207,7 +208,7 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static int CountBiggerInBetween(BinNode<double> root)
         {
-          
+            return 0;
         }
 
         #endregion
@@ -224,8 +225,8 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static int BinTreeHight<T>(BinNode<T> root)
         {
+            return 0;
 
-        
         }
         #endregion
 
@@ -240,7 +241,7 @@ namespace BinaryTreeExamples
         /// <param name="targetLevel"></param>
         public static void PrintNodesInLevel<T>(BinNode<T> root, int targetLevel)
         {
-            
+
         }
         #endregion
 
@@ -254,7 +255,7 @@ namespace BinaryTreeExamples
         /// <param name="currentLevel">הרמה הנוכחית שאליה הגענו בסריקה</param>
         private static void PrintNodesInLevel<T>(BinNode<T> root, int targetLevel, int currentLevel)
         {
-            
+
         }
         #endregion
         #endregion
@@ -284,8 +285,8 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static int[] BinTreeWidth<T>(BinNode<T> root)
         {
-        
 
+            return null;
 
         }
         #endregion
@@ -350,7 +351,7 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static int[] BinTreeWidthVersion2<T>(BinNode<T> root)
         {
-          
+            return null;
         }
 
 
@@ -407,7 +408,7 @@ namespace BinaryTreeExamples
         #region הוספת ערך לעץ חיפוש
         public static void AddToBST(BinNode<int> t, int x)
         {
-           
+
 
         }
         #endregion
@@ -415,7 +416,7 @@ namespace BinaryTreeExamples
         #region מקסימום/מינימום בעץ חיפוש
         public static int FindMaxInBST(BinNode<int> t)
         {
-            
+            return 0;
         }
         #endregion
 
@@ -429,46 +430,46 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static bool IsBST(BinNode<int> t)
         {
-            
+            return false;
 
         }
 
         public static int FindMin(BinNode<int> t)
         {
-            
+            return 0;
         }
         #endregion
 
         #region מצא הורה בעץ חיפוש
         public static BinNode<int> FindParent(BinNode<int> root, BinNode<int> child)
         {
-            
+            return null;
         }
-            #endregion
+        #endregion
 
-            #region מחיקת ערך בעץ חיפוש
-            //            The node has no children(it's a leaf node). You can delete it. ...
-            //The node has just one child.To delete the node, replace it with that child. ...
-            //The node has two children.In this case, find the MAX in the LEFT Side of the node. (or MIN of the RIGHT SIDE OF THE NODE)
+        #region מחיקת ערך בעץ חיפוש
+        //            The node has no children(it's a leaf node). You can delete it. ...
+        //The node has just one child.To delete the node, replace it with that child. ...
+        //The node has two children.In this case, find the MAX in the LEFT Side of the node. (or MIN of the RIGHT SIDE OF THE NODE)
 
-            public static BinNode<int> RemoveFromBST(BinNode<int> root, int key)
-            {
+        public static BinNode<int> RemoveFromBST(BinNode<int> root, int key)
+        {
 
+            return null;
 
-                
         }
 
 
-               
-
-
-                #endregion
-                #endregion
-        
-            
-       
 
 
 
-   
+        #endregion
+        #endregion
+
+
+
+
+
+
+    }  
 }
