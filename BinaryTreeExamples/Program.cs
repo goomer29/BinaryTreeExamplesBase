@@ -24,7 +24,7 @@ namespace BinaryTreeExamples
             WhichLevel(root, 2);
             Console.WriteLine();
             EvenLevels(root);
-            Console.WriteLine(LevelsDistance(root,54,63));
+            Console.WriteLine(Whidth<int>(root));
 
         }
         public static void WhichLevel(BinNode<int> root, int level)
@@ -114,6 +114,48 @@ namespace BinaryTreeExamples
                 }
             }
             return Math.Abs(level2 - level1);
+        }
+        public static int Whidth<T>(BinNode<T> root)
+        {
+            BinNode<T> node;
+            Queue<BinNode<T>> queue = new Queue<BinNode<T>>();
+            int level = 0;
+            int maxrow = 0;
+            int current = 0;
+            int count = 0;
+            Queue<int> levels = new Queue<int>();
+            queue.Insert(root);
+            levels.Insert(level);
+            while (!queue.IsEmpty())
+            {
+                node = queue.Remove();
+                level = levels.Remove();
+                if (current == level)
+                {
+                    count++;
+                }
+                else
+                {
+                    if (count > maxrow)
+                    {
+                        maxrow = current;
+                    }
+                        current = level;
+                        count = 1;
+                }
+                if (node.HasLeft())
+                {
+                    queue.Insert(node.GetLeft());
+                    levels.Insert(level + 1);
+                }
+                if (node.HasRight())
+                {
+                    queue.Insert(node.GetRight());
+                    levels.Insert(level + 1);
+                }
+
+            }
+            return maxrow;
         }
     }
 }
