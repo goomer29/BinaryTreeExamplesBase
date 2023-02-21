@@ -6,6 +6,7 @@ using System.Threading;
 using System.Reflection.Emit;
 using System.Drawing;
 
+
 namespace BinaryTreeExamples
 {
     class Program
@@ -17,13 +18,10 @@ namespace BinaryTreeExamples
           
 
             BinNode<int> root = new BinNode<int>(54);
-            BinNode<int> left = new BinNode<int>(null, 77, new BinNode<int>(55));
-            BinNode<int> right = new BinNode<int>(new BinNode<int>(63), 48, null);
+            BinNode<int> left = new BinNode<int>(new BinNode<int>(5), 77, new BinNode<int>(55));
+            BinNode<int> right = new BinNode<int>(new BinNode<int>(63), 48, new BinNode<int>(34));
             root.SetRight(right);
             root.SetLeft(left);
-            WhichLevel(root, 2);
-            Console.WriteLine();
-            EvenLevels(root);
             Console.WriteLine(Whidth<int>(root));
 
         }
@@ -123,6 +121,7 @@ namespace BinaryTreeExamples
             int maxrow = 0;
             int current = 0;
             int count = 0;
+            int countmax = 0;
             Queue<int> levels = new Queue<int>();
             queue.Insert(root);
             levels.Insert(level);
@@ -136,11 +135,12 @@ namespace BinaryTreeExamples
                 }
                 else
                 {
-                    if (count > maxrow)
+                    if (count > countmax)
                     {
                         maxrow = current;
+                        countmax = count;
                     }
-                        current = level;
+                        current++;
                         count = 1;
                 }
                 if (node.HasLeft())
@@ -155,7 +155,49 @@ namespace BinaryTreeExamples
                 }
 
             }
+            if (count > countmax)
+            {
+                maxrow = current;
+            }
             return maxrow;
+        }
+        // הסיבוכיות כאשר אין כמות העלים: O(n)
+        public static int Whidth2<T>(BinNode<T> root)
+        {
+            int[] arr = new int[BTHelper.BinTreeHight(root)];
+            BinNode<T> node;
+            Queue<BinNode<T>> queue = new Queue<BinNode<T>>();
+            Queue<int> levels = new Queue<int>();
+            queue.Insert(root);
+            int level = 0;
+            levels.Insert(level);
+            while (!queue.IsEmpty())
+            {
+                node = queue.Remove();
+                level = levels.Remove();
+                if (node.HasLeft())
+                {
+                    queue.Insert(node.GetLeft());
+                    levels.Insert(level + 1);
+                }
+                if (node.HasRight())
+                {
+                    queue.Insert(node.GetRight());
+                    levels.Insert(level + 1);
+                }
+                arr[level]++;
+            }
+            int maxcount = arr[0];
+            int max = 0;
+            for(int i = 1; i < arr.Length; i++)
+            {
+                if (maxcount < arr[i])
+                {
+                    max = i;
+                    maxcount = arr[i];
+                }
+            }
+            return max;
         }
     }
 }

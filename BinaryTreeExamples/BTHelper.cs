@@ -225,7 +225,14 @@ namespace BinaryTreeExamples
         /// <returns></returns>
         public static int BinTreeHight<T>(BinNode<T> root)
         {
-            return 0;
+            if (root == null || !root.HasLeft() && !root.HasRight())
+            {
+                return 0;
+            }
+           int left=BinTreeHight(root.GetLeft());
+            int right = BinTreeHight(root.GetLeft());
+            return 1 + Math.Max(left, right);
+
 
         }
         #endregion
