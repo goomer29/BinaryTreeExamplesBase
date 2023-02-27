@@ -199,5 +199,38 @@ namespace BinaryTreeExamples
             }
             return max;
         }
+        public static BinNode<int> Putin(BinNode<int> root, int x)
+        {
+            if (root == null)
+                return new BinNode<int>(x);
+            if (root.GetValue() <= x)
+            {
+                root.SetRight(Putin(root.GetRight(),x));
+            }
+            else
+            {
+                root.SetLeft(Putin(root.GetLeft(),x));
+            }
+            return root;
+        }
+        public static bool IsBST(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            if (root.HasRight())
+            {
+                if (root.GetRight().GetValue() < root.GetValue())
+                    return false;
+            }
+            if (root.HasLeft())
+            {
+                if (root.GetLeft().GetValue() >= root.GetValue())
+                    return false;
+                return IsBST(root.GetRight());
+            }
+            return IsBST(root.GetRight())&&IsBST(root.GetLeft());
+        }
     }
 }
